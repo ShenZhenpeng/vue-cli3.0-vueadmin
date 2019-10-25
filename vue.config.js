@@ -13,8 +13,8 @@ function resolve(dir) {
 }
 const proxyTargetMap = {
     prod: 'https://xxx.xxx.com/',
-    randy: 'http://47.105.71.81:3306',
-    peter: 'http://192.168.11.178:3001'
+    randy: 'http://127.0.0.1:5454',
+    peter: 'http://127.0.0.1:5454'
 }
 let proxyTarget = proxyTargetMap[process.env.API_TYPE] || proxyTargetMap.prod
 let publicPath = process.env.NODE_ENV === 'production' ? '/' : '/'
@@ -99,9 +99,9 @@ module.exports = {
     // 配置 webpack-dev-server 行为。
     devServer: {
         disableHostCheck: true,
-        open: process.platform === 'darwin',
-        host: 'localhost',
-        port: 8080,
+        // open: process.platform === 'darwin',
+        host: '127.0.0.1',
+        port: 5454,
         https: false,
         hotOnly: false,
         // eslint-disable-next-line no-dupe-keys
