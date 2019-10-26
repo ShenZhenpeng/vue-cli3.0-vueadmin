@@ -17,7 +17,7 @@ export default new Router({
             component: Login
         }
     ]
-})
+});
 
 /* 准备动态添加的路由 */
 export const DynamicRoutes = [
@@ -51,4 +51,4 @@ export const DynamicRoutes = [
         path: '*',
         component: NotFound
     }
-]
+];

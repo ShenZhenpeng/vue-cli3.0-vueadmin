@@ -23,6 +23,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped rel="stylesheet/scss">
 
 </style>

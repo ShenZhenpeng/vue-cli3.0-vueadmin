@@ -1,24 +1,27 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-    .BundleAnalyzerPlugin
-const path = require('path')
-const webpack = require('webpack')
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+    .BundleAnalyzerPlugin;
+const path = require('path');
+const webpack = require('webpack');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 // 导入compression-webpack-plugin
-const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 // 定义压缩文件类型
-const productionGzipExtensions = ['js', 'css']
+const productionGzipExtensions = ['js', 'css'];
 
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
 const proxyTargetMap = {
-    prod: 'https://xxx.xxx.com/',
-    randy: 'http://127.0.0.1:5454',
-    peter: 'http://127.0.0.1:5454'
-}
-let proxyTarget = proxyTargetMap[process.env.API_TYPE] || proxyTargetMap.prod
-let publicPath = process.env.NODE_ENV === 'production' ? '/' : '/'
-let dllPublishPath = '/vendor'
+    dev: 'http://127.0.0.1:8080',
+    uat: 'http://127.0.0.1:8080',
+    prod: 'https://127.0.0.1:8080'
+};
+let proxyTarget = proxyTargetMap[process.env.API_TYPE] || proxyTargetMap.prod;
+
+console.log(process.env.API_TYPE, proxyTarget);
+
+let publicPath = process.env.NODE_ENV === 'production' ? '/' : '/';
+let dllPublishPath = '/vendor';
 module.exports = {
     publicPath: publicPath,
     outputDir: 'dist',
@@ -112,7 +115,7 @@ module.exports = {
                 target: proxyTarget,
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/api': ''
+                    // '^/api': ''
                 }
             }
         },

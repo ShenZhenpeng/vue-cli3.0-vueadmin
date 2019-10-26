@@ -68,19 +68,20 @@ export default {
     methods: {
         showPwd() {
             if (this.pwdType === 'password') {
-                this.pwdType = ''
+                this.pwdType = '';
             } else {
-                this.pwdType = 'password'
+                this.pwdType = 'password';
             }
         },
         async login() {
             try {
-                let data = await login(this.loginForm)
-                let token = data.token
-                this.$store.commit('LOGIN_IN', token)
-                this.$router.replace('/')
+                let data = await login(this.loginForm);
+                console.log(data);
+                let token = data.token;
+                this.$store.commit('LOGIN_IN', token);
+                this.$router.replace('/');
             } catch (e) {
-                console.log(e)
+                console.log(e);
             }
         }
     }

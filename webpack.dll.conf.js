@@ -1,9 +1,13 @@
-const path = require('path')
-const webpack = require('webpack')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+function resolve (dir) {
+    return path.join(__dirname, '.', dir)
+}
 
 // dll文件存放的目录
-const dllPath = 'public/vendor'
+const dllPath = 'public/vendor';
 
 module.exports = {
     entry: {
@@ -17,6 +21,12 @@ module.exports = {
         // vendor.dll.js中暴露出的全局变量名
         // 保持与 webpack.DllPlugin 中名称一致
         library: '[name]_[hash]'
+    },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            '@': resolve('src'),
+        }
     },
     plugins: [
         // 清除之前的dll文件

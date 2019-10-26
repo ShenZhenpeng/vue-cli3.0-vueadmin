@@ -11,15 +11,15 @@ import axios from './config/httpConfig'
 import * as globalFilter from './filters/filters'
 import '@/icons'
 
-Vue.prototype.$http = axios
+Vue.prototype.$http = axios;
 
 for (var key in globalFilter) {
-    Vue.filter(key, globalFilter[key])
+    Vue.filter(key, globalFilter[key]);
 }
 
-Vue.use(ElementUI)
+Vue.use(ElementUI);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
     if (!store.state.UserToken) {

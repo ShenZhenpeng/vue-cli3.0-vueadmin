@@ -1,22 +1,35 @@
 /* 订单管理 */
-const Order = () => import('@/pages/order-manage')
-const OrderList = () => import('@/pages/order-manage/order-list')
-const ProductManage = () => import('@/pages/order-manage/product-manage')
-const ProductionList = () =>
-    import('@/pages/order-manage/product-manage/production-list')
-const ReviewManage = () =>
-    import('@/pages/order-manage/product-manage/review-manage')
-const ReturnGoods = () => import('@/pages/order-manage/return-goods')
+const Order = () => resolve => {require.ensure(['../pages/order-manage/index.vue'],
+    () => {resolve(require('../pages/order-manage/index.vue'))})};
+const OrderList = () => {require.ensure(['../pages/order-manage/order-list/index.vue'],
+    () => {resolve(require('../pages/order-manage/order-list/index.vue'))})};
+const ProductManage = () => {require.ensure(['../pages/order-manage/product-manage/index.vue'],
+    () => {resolve(require('../pages/order-manage/product-manage/index.vue'))})};
+const ProductionList = () => {require.ensure(['../pages/order-manage/product-manage/production-list/index.vue'],
+    () => {resolve(require('../pages/order-manage/product-manage/production-list/index.vue'))})};
+const ReviewManage = () => {require.ensure(['../pages/order-manage/product-manage/review-manage/index.vue'],
+    () => {resolve(require('../pages/order-manage/product-manage/review-manage/index.vue'))})};
+const ReturnGoods = () => {require.ensure(['../pages/order-manage/return-goods/index.vue'],
+    () => {resolve(require('../pages/order-manage/return-goods/index.vue'))})};
 
 /* 产品管理 */
-const Goods = () => import('@/pages/goods-manage')
-const GoodsList = () => import('@/pages/goods-manage/goods-list')
-const GoodsClassify = () => import('@/pages/goods-manage/goods-classify')
+const Goods = () => {require.ensure(['../pages/goods-manage/index.vue'],
+    () => {resolve(require('../pages/goods-manage/index.vue'))})};
+const GoodsList = () => {require.ensure(['../pages/goods-manage/goods-list/index.vue'],
+    () => {resolve(require('../pages/goods-manage/goods-list/index.vue'))})};
+const GoodsClassify = () => {require.ensure(['../pages/goods-manage/goods-classify/index.vue'],
+    () => {resolve(require('../pages/goods-manage/goods-classify/index.vue'))})};
+
 // 权限管理
-const Permission = () => import('@/pages/permission')
-const UserManage = () => import('@/pages/permission/user-manage')
-const RoleManage = () => import('@/pages/permission/role-manage')
-const MenuManage = () => import('@/pages/permission/menu-manage')
+const Permission = () => {require.ensure(['../pages/permission/index.vue'],
+    () => {resolve(require('../pages/permission/index.vue'))})};
+const UserManage = () => {require.ensure(['../pages/permission/user-manage/index.vue'],
+    () => {resolve(require('../pages/permission/user-manage/index.vue'))})};
+const RoleManage = () => {require.ensure(['../pages/permission/role-manage/index.vue'],
+    () => {resolve(require('../pages/permission/role-manage/index.vue'))})};
+const MenuManage = () => {require.ensure(['../pages/permission/menu-manage/index.vue'],
+    () => {resolve(require('../pages/permission/menu-manage/index.vue'))})};
+
 /* 需要权限判断的路由 */
 const dynamicRoutes = [
     {
@@ -144,6 +157,6 @@ const dynamicRoutes = [
             }
         ]
     }
-]
+];
 
 export default dynamicRoutes
